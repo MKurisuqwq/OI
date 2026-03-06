@@ -1,18 +1,19 @@
 #include <bits/stdc++.h>
+#define int long long
 
 using namespace std;
 using ll = long long;
 using pii = pair<int, int>;
 
-const int MAXN = 2e6 + 10;
+const int MAXN = 4e5 + 10;
 int n, l1[MAXN], r1[MAXN], l2[MAXN], r2[MAXN];
 namespace solve {
     int cnt, a[MAXN], b[MAXN], c[MAXN], d[MAXN], e[MAXN], f[MAXN], num[MAXN];
     void solve() {
         cnt = 0;
-        for (int i = 1; i <= n; i++)
-            num[++cnt] = l2[i], num[++cnt] = r2[i] + 1, a[i] = b[i] = c[i] = d[i] = e[i] = f[i] = 0;
+        for (int i = 1; i <= n; i++) num[++cnt] = l2[i], num[++cnt] = r2[i] + 1;
         sort(num + 1, num + 1 + cnt), cnt = unique(num + 1, num + 1 + cnt) - num - 1;
+        for (int i = 1; i <= cnt; i++) a[i] = b[i] = c[i] = d[i] = e[i] = f[i] = 0;
         for (int i = 1; i <= n; i++) {
             int L = lower_bound(num + 1, num + 1 + cnt, l2[i]) - num,
                 R = lower_bound(num + 1, num + 1 + cnt, r2[i] + 1) - num;
